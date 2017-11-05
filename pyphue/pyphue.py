@@ -74,10 +74,16 @@ class PyPHue:
     # HUE/BRIGHTNESS/SATURATION CONTROLLERS #
     #########################################
 
+    # On/Off:     True/False
     # Brightness: 0 - 254
     # Saturation: 0 - 254
     # Hue:        0 - 65535
 
+    # Returns the state (on/off) of specified light
+    def getOnOff(self, lightID):
+        response = self.getLight(lightID)
+        return response['json']['state']['on']
+    
     # Returns the brightness value of specified light
     def getBrightness(self, lightID):
         response = self.getLight(lightID)
